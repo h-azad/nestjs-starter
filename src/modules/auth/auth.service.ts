@@ -8,7 +8,7 @@ export class AuthService {
   constructor(
     private readonly userService: UsersService,
     private readonly jwtService: JwtService,
-  ) {}
+  ) { }
 
   async validateUser(email: string, pass: string) {
     // find if user exist with this email
@@ -52,7 +52,7 @@ export class AuthService {
     const token = await this.generateToken(result);
 
     // return the user and the token
-    return { user: result, token };
+    return { data: { user: result, token }, message: "Signup Successfull" };
   }
 
   private async generateToken(user) {

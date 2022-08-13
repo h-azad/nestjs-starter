@@ -20,10 +20,9 @@ export class UsersController {
   constructor(private readonly userService: UsersService) {}
 
   @UseGuards(AuthGuard('jwt'))
-  @Put(':id')
+  @Put('/')
   @UseInterceptors(TransformInterceptor)
   async update(
-    @Param('id') id: number,
     @Body() user: UserUpdateDto,
     @Request() req,
   ): Promise<any> {
